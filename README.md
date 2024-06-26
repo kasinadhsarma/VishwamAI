@@ -1,7 +1,5 @@
 # VishwamAI
 
-```markdown
-# VishwamAI Model
 
 VishwamAI is an advanced language model based on the Transformer architecture, designed for various natural language processing tasks.
 
