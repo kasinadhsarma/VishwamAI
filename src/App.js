@@ -8,6 +8,7 @@ import SimulationModule from './components/SimulationModule';
 import SustainabilityModule from './components/SustainabilityModule';
 import FutureScenarioPlanningTool from './components/FutureScenarioPlanningTool';
 import CommunityForum from './components/CommunityForum';
+import AdvancedOxygenAwarenessDashboard from './AdvancedOxygenAwarenessDashboard';
 import theme from './theme';
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
               <Button as={RouterLink} to="/community-forum" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
                 Community Forum
               </Button>
+              <Button as={RouterLink} to="/dashboard" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
+                Advanced Oxygen Awareness Dashboard
+              </Button>
             </VStack>
           </Box>
           <Box>
@@ -54,6 +58,7 @@ function App() {
               <Route path="/sustainability" element={<SustainabilityModule />} />
               <Route path="/future-planning" element={<FutureScenarioPlanningTool />} />
               <Route path="/community-forum" element={<CommunityForum />} />
+              <Route path="/dashboard" element={<AdvancedOxygenAwarenessDashboard />} />
             </Routes>
           </Box>
         </Box>
