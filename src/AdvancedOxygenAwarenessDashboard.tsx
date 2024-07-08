@@ -7,40 +7,50 @@ const Header = ({ darkMode, setDarkMode }) => {
   const [searchVisible, setSearchVisible] = useState(false);
 
   return (
-    <div className={`mb-6 p-4 ${darkMode ? 'bg-gray-800' : 'bg-gradient-to-r from-green-400 to-blue-500'} rounded-lg shadow-lg text-white transition-colors duration-300`}>
-      <div className="flex justify-between items-center">
-        <h1 className="text-xl md:text-2xl font-bold">Oxygen Awareness Hub</h1>
-        <div className="flex items-center space-x-2 md:space-x-4">
-          <Button variant="ghost" size="icon" onClick={() => setSearchVisible(!searchVisible)} className="text-white hover:bg-white/20">
-            <Search className="h-5 w-5" />
+    <Box
+      mb={6}
+      p={4}
+      bg={darkMode ? 'gray.800' : 'linear-gradient(to-r, green.400, blue.500)'}
+      rounded="lg"
+      shadow="lg"
+      color="white"
+      transition="background-color 0.3s"
+    >
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Heading as="h1" size="lg" fontWeight="bold">
+          Oxygen Awareness Hub
+        </Heading>
+        <Box display="flex" alignItems="center" spacing={4}>
+          <Button variant="ghost" size="sm" onClick={() => setSearchVisible(!searchVisible)}>
+            <Search />
           </Button>
-          <Badge variant="secondary" className="hidden md:inline-flex">
+          <Badge variant="solid" display={{ base: 'none', md: 'inline-flex' }}>
             Air Quality: Good
           </Badge>
           <Switch
-            checked={darkMode}
-            onCheckedChange={setDarkMode}
-            className="data-[state=checked]:bg-gray-600"
-            icon={darkMode ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            isChecked={darkMode}
+            onChange={setDarkMode}
+            colorScheme="gray"
+            icon={darkMode ? <Moon /> : <Sun />}
           />
           <Menu>
-            <MenuButton as={Button} variant="ghost" size="icon" className="md:hidden text-white hover:bg-white/20">
+            <MenuButton as={Button} variant="ghost" size="sm" display={{ base: 'inline-flex', md: 'none' }}>
               <MenuIcon />
             </MenuButton>
-            <MenuList align="end">
+            <MenuList>
               <MenuItem>Air Quality: Good</MenuItem>
               <MenuItem>Latest News</MenuItem>
               <MenuItem>Take Action</MenuItem>
             </MenuList>
           </Menu>
-        </div>
-      </div>
+        </Box>
+      </Box>
       {searchVisible && (
-        <div className="mt-4">
-          <Input placeholder="Search topics..." className="bg-white/10 border-white/20 text-white placeholder-white/50" />
-        </div>
+        <Box mt={4}>
+          <Input placeholder="Search topics..." bg="whiteAlpha.200" borderColor="whiteAlpha.300" color="white" />
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 
