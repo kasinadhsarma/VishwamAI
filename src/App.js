@@ -1,5 +1,5 @@
-import React from 'react';
-import { ChakraProvider, Box, Heading, VStack, Button, useColorMode, IconButton, Image } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
+import { ChakraProvider, Box, Heading, VStack, Button, useColorMode, IconButton, Image, ColorModeScript } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes, Link as RouterLink } from 'react-router-dom';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import logo from './assets/o2-awareness-logo.png';
@@ -28,8 +28,13 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    console.log('Color mode updated:', colorMode);
+  }, [colorMode]);
+
   return (
     <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Router>
         <Box p={{ base: 4, md: 8 }} maxW="1200px" mx="auto">
           <Box as="header" mb={{ base: 4, md: 8 }}>
