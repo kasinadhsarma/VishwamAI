@@ -14,6 +14,20 @@ import theme from './theme';
 function App() {
   const { colorMode, toggleColorMode } = useColorMode();
 
+  console.log('App component rendered');
+  console.log('Initial color mode:', colorMode);
+  console.log('toggleColorMode function:', toggleColorMode);
+
+  const handleToggleColorMode = () => {
+    console.log('Current color mode:', colorMode);
+    if (typeof toggleColorMode === 'function') {
+      toggleColorMode();
+      console.log('Color mode after toggle:', colorMode === 'light' ? 'dark' : 'light');
+    } else {
+      console.error('toggleColorMode is not a function');
+    }
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <Router>
@@ -26,7 +40,7 @@ function App() {
             <IconButton
               aria-label="Toggle dark mode"
               icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
-              onClick={toggleColorMode}
+              onClick={handleToggleColorMode}
               mb={4}
             />
             <VStack spacing={4} w="full">
@@ -68,3 +82,5 @@ function App() {
 }
 
 export default App;
+console.log('useColorMode:', useColorMode);
+console.log('toggleColorMode:', toggleColorMode);

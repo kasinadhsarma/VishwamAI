@@ -81,12 +81,12 @@ const OxygenLevelsChart = ({ darkMode }) => {
 
 const AwarenessModule = ({ darkMode }) => {
   return (
-    <Card className={`w-full overflow-hidden transition-all duration-300 hover:shadow-lg ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
-      <CardHeader className={darkMode ? 'bg-gray-800' : 'bg-gradient-to-r from-green-400 to-blue-500 text-white'}>
-        <CardTitle className="text-lg md:text-xl font-semibold">Oxygen Awareness</CardTitle>
-        <CardDescription className={darkMode ? 'text-gray-300' : 'text-white/80'}>Understand the importance of oxygen for our planet</CardDescription>
-      </CardHeader>
-      <CardContent className="p-6">
+    <Box className={`w-full overflow-hidden transition-all duration-300 hover:shadow-lg ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
+      <Box className={darkMode ? 'bg-gray-800' : 'bg-gradient-to-r from-green-400 to-blue-500 text-white'}>
+        <Heading className="text-lg md:text-xl font-semibold">Oxygen Awareness</Heading>
+        <Text className={darkMode ? 'text-gray-300' : 'text-white/80'}>Understand the importance of oxygen for our planet</Text>
+      </Box>
+      <Box className="p-6">
         <h3 className="text-lg font-semibold mb-4">Atmospheric Oxygen Levels</h3>
         <p className="mb-4">Oxygen levels in our atmosphere have been changing over time. Here's a look at the trends:</p>
         <OxygenLevelsChart darkMode={darkMode} />
@@ -99,22 +99,22 @@ const AwarenessModule = ({ darkMode }) => {
         <Button className={`w-full ${darkMode ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600'} text-white transition-all duration-300 transform hover:scale-105`}>
           Learn More About Oxygen
         </Button>
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   );
 };
 
 const PortfolioItem = ({ title, description, image, darkMode }) => (
-  <Card className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
+  <Box className={`overflow-hidden transition-all duration-300 hover:shadow-lg ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
     <img src={`/api/placeholder/${image}`} alt={title} className="w-full h-48 object-cover" />
-    <CardContent className="p-4">
+    <Box className="p-4">
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
       <p className={`text-sm ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>
-    </CardContent>
-    <CardFooter>
+    </Box>
+    <Box>
       <Button variant="outline" className="w-full">Learn More</Button>
-    </CardFooter>
-  </Card>
+    </Box>
+  </Box>
 );
 
 const PortfolioSection = ({ darkMode }) => (
@@ -170,46 +170,65 @@ const OxygenAwarenessDashboard = () => {
       <HeroSection darkMode={darkMode} />
 
       <Tabs defaultValue="awareness" className="space-y-6">
-        <TabsList className={`flex md:inline-flex w-full ${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg p-1 shadow-sm overflow-x-auto md:overflow-x-visible`}>
-          <TabsTrigger value="awareness" className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-400 data-[state=active]:to-blue-500'} data-[state=active]:text-white transition-all duration-300`}>
+        <TabList className={`flex md:inline-flex w-full ${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg p-1 shadow-sm overflow-x-auto md:overflow-x-visible`}>
+          <Tab className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-400 data-[state=active]:to-blue-500'} data-[state=active]:text-white transition-all duration-300`}>
             <Leaf className="w-4 h-4 mr-2" />
             <span className="hidden md:inline">Awareness</span>
-          </TabsTrigger>
-          <TabsTrigger value="water" className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-400 data-[state=active]:to-indigo-500'} data-[state=active]:text-white transition-all duration-300`}>
+          </Tab>
+          <Tab className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-400 data-[state=active]:to-indigo-500'} data-[state=active]:text-white transition-all duration-300`}>
             <Droplet className="w-4 h-4 mr-2" />
             <span className="hidden md:inline">Water & Oxygen</span>
-          </TabsTrigger>
-          <TabsTrigger value="air" className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-orange-500'} data-[state=active]:text-white transition-all duration-300`}>
+          </Tab>
+          <Tab className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-yellow-400 data-[state=active]:to-orange-500'} data-[state=active]:text-white transition-all duration-300`}>
             <Wind className="w-4 h-4 mr-2" />
             <span className="hidden md:inline">Air Quality</span>
-          </TabsTrigger>
-          <TabsTrigger value="flora" className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-400 data-[state=active]:to-teal-500'} data-[state=active]:text-white transition-all duration-300`}>
+          </Tab>
+          <Tab className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-400 data-[state=active]:to-teal-500'} data-[state=active]:text-white transition-all duration-300`}>
             <Flower className="w-4 h-4 mr-2" />
             <span className="hidden md:inline">Flora & O2</span>
-          </TabsTrigger>
-          <TabsTrigger value="action" className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-400 data-[state=active]:to-pink-500'} data-[state=active]:text-white transition-all duration-300`}>
+          </Tab>
+          <Tab className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-400 data-[state=active]:to-pink-500'} data-[state=active]:text-white transition-all duration-300`}>
             <Globe className="w-4 h-4 mr-2" />
             <span className="hidden md:inline">Take Action</span>
-          </TabsTrigger>
-        </TabsList>
+          </Tab>
+        </TabList>
 
-        <TabsContent value="awareness">
-          <AwarenessModule darkMode={darkMode} />
-        </TabsContent>
+        <TabPanels>
+          <TabPanel>
+            <Box className={`w-full overflow-hidden transition-all duration-300 hover:shadow-lg ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
+              <Box className={darkMode ? 'bg-gray-800' : 'bg-gradient-to-r from-green-400 to-blue-500 text-white'}>
+                <Heading className="text-lg md:text-xl font-semibold">Oxygen Awareness</Heading>
+                <Text className={darkMode ? 'text-gray-300' : 'text-white/80'}>Understand the importance of oxygen for our planet</Text>
+              </Box>
+              <Box className="p-6">
+                <h3 className="text-lg font-semibold mb-4">Atmospheric Oxygen Levels</h3>
+                <p className="mb-4">Oxygen levels in our atmosphere have been changing over time. Here's a look at the trends:</p>
+                <OxygenLevelsChart darkMode={darkMode} />
+                <ul className="list-disc list-inside my-6 space-y-2">
+                  <li>Oxygen is crucial for most life forms on Earth</li>
+                  <li>It's produced by plants through photosynthesis</li>
+                  <li>Human activities are affecting oxygen levels</li>
+                  <li>Oceans produce about 50-80% of the Earth's oxygen</li>
+                </ul>
+                <Button className={`w-full ${darkMode ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600'} text-white transition-all duration-300 transform hover:scale-105`}>
+                  Learn More About Oxygen
+                </Button>
+              </Box>
+            </Box>
+          </TabPanel>
 
-        <TabsContent value="action">
-          <Card className={`w-full overflow-hidden transition-all duration-300 hover:shadow-lg ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
-            <CardHeader className={darkMode ? 'bg-gray-800' : 'bg-gradient-to-r from-purple-400 to-pink-500 text-white'}>
-              <CardTitle className="text-lg md:text-xl font-semibold">Our Initiatives</CardTitle>
-              <CardDescription className={darkMode ? 'text-gray-300' : 'text-white/80'}>Explore our projects and get involved</CardDescription>
-            </CardHeader>
-            <CardContent className="p-6">
-              <PortfolioSection darkMode={darkMode} />
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        {/* Other tab contents would go here */}
+          <TabPanel>
+            <Box className={`w-full overflow-hidden transition-all duration-300 hover:shadow-lg ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
+              <Box className={darkMode ? 'bg-gray-800' : 'bg-gradient-to-r from-purple-400 to-pink-500 text-white'}>
+                <Heading className="text-lg md:text-xl font-semibold">Our Initiatives</Heading>
+                <Text className={darkMode ? 'text-gray-300' : 'text-white/80'}>Explore our projects and get involved</Text>
+              </Box>
+              <Box className="p-6">
+                <PortfolioSection darkMode={darkMode} />
+              </Box>
+            </Box>
+          </TabPanel>
+        </TabPanels>
       </Tabs>
     </div>
   );
