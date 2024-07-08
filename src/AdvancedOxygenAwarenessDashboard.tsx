@@ -1,17 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from './components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
-import { Button } from './components/ui/button';
-import { Input } from './components/ui/input';
-import { Badge } from './components/ui/badge';
-import { Switch } from './components/ui/switch';
-import { Leaf, Droplet, Wind, Flower, Globe, Search, Menu, Moon, Sun, ArrowRight } from 'lucide-react';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from './components/ui/dropdown-menu';
+import { Box, Heading, Text, Button, Input, Badge, Switch, Tabs, TabList, TabPanels, TabPanel, Tab, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
+import { Leaf, Droplet, Wind, Flower, Globe, Search, Menu as MenuIcon, Moon, Sun, ArrowRight } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 const Header = ({ darkMode, setDarkMode }) => {
@@ -34,18 +23,16 @@ const Header = ({ darkMode, setDarkMode }) => {
             className="data-[state=checked]:bg-gray-600"
             icon={darkMode ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
           />
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden text-white hover:bg-white/20">
-                <Menu />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem>Air Quality: Good</DropdownMenuItem>
-              <DropdownMenuItem>Latest News</DropdownMenuItem>
-              <DropdownMenuItem>Take Action</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Menu>
+            <MenuButton as={Button} variant="ghost" size="icon" className="md:hidden text-white hover:bg-white/20">
+              <MenuIcon />
+            </MenuButton>
+            <MenuList align="end">
+              <MenuItem>Air Quality: Good</MenuItem>
+              <MenuItem>Latest News</MenuItem>
+              <MenuItem>Take Action</MenuItem>
+            </MenuList>
+          </Menu>
         </div>
       </div>
       {searchVisible && (
@@ -181,7 +168,7 @@ const OxygenAwarenessDashboard = () => {
     <div className={`p-4 md:p-6 max-w-6xl mx-auto ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} min-h-screen transition-colors duration-300`}>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <HeroSection darkMode={darkMode} />
-      
+
       <Tabs defaultValue="awareness" className="space-y-6">
         <TabsList className={`flex md:inline-flex w-full ${darkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg p-1 shadow-sm overflow-x-auto md:overflow-x-visible`}>
           <TabsTrigger value="awareness" className={`flex-shrink-0 ${darkMode ? 'data-[state=active]:bg-blue-600' : 'data-[state=active]:bg-gradient-to-r data-[state=active]:from-green-400 data-[state=active]:to-blue-500'} data-[state=active]:text-white transition-all duration-300`}>
