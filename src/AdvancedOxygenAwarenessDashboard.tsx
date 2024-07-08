@@ -176,7 +176,12 @@ const OxygenAwarenessDashboard = () => {
       })
       .then(data => {
         console.log('Fetched data:', data);
-        setExampleData(data);
+        // Transform the data to match the expected format for the chart
+        const transformedData = data.map(item => ({
+          year: item.year,
+          level: item.level
+        }));
+        setExampleData(transformedData);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
