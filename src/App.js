@@ -1,9 +1,8 @@
 import React from 'react';
-import { ChakraProvider, Box, Heading, Link, VStack, Button, useColorMode, IconButton } from '@chakra-ui/react';
+import { ChakraProvider, Box, Heading, VStack, Button, useColorMode, IconButton, Image } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes, Link as RouterLink } from 'react-router-dom';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import logo from './assets/o2-awareness-logo.png';
-import './App.css';
 import EducationalModule from './components/EducationalModule';
 import SimulationModule from './components/SimulationModule';
 import SustainabilityModule from './components/SustainabilityModule';
@@ -17,9 +16,9 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Router>
-        <Box className="App" p={{ base: 4, md: 8 }} maxW="1200px" mx="auto">
-          <header className="App-header" mb={{ base: 4, md: 8 }}>
-            <img src={logo} className="App-logo" alt="logo" style={{ width: '100%', maxWidth: '200px' }} />
+        <Box p={{ base: 4, md: 8 }} maxW="1200px" mx="auto">
+          <Box as="header" mb={{ base: 4, md: 8 }}>
+            <Image src={logo} alt="logo" width="100%" maxWidth="200px" />
             <Heading as="h1" size={{ base: 'lg', md: 'xl' }} mb={4}>
               Oxygen Agent
             </Heading>
@@ -46,24 +45,17 @@ function App() {
                 Community Forum
               </Button>
             </VStack>
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <Link
-              className="App-link"
-              href="https://reactjs.org"
-              isExternal
-            >
-              Learn React
-            </Link>
-          </header>
-          <Routes>
-            <Route path="/educational" element={<EducationalModule />} />
-            <Route path="/simulation" element={<SimulationModule />} />
-            <Route path="/sustainability" element={<SustainabilityModule />} />
-            <Route path="/future-planning" element={<FutureScenarioPlanningTool />} />
-            <Route path="/community-forum" element={<CommunityForum />} />
-          </Routes>
+          </Box>
+          <Box>
+            <Routes>
+              <Route path="/" element={<EducationalModule />} />
+              <Route path="/educational" element={<EducationalModule />} />
+              <Route path="/simulation" element={<SimulationModule />} />
+              <Route path="/sustainability" element={<SustainabilityModule />} />
+              <Route path="/future-planning" element={<FutureScenarioPlanningTool />} />
+              <Route path="/community-forum" element={<CommunityForum />} />
+            </Routes>
+          </Box>
         </Box>
       </Router>
     </ChakraProvider>
