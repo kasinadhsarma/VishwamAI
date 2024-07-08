@@ -52,7 +52,7 @@ function App() {
             <Heading as="h2" size={{ base: 'md', md: 'lg' }} mb={4}>
               Breathe Easy, Act Wisely
             </Heading>
-            <Button colorScheme="teal" size={{ base: 'md', md: 'lg' }}>
+            <Button as={RouterLink} to="/community-forum" colorScheme="teal" size={{ base: 'md', md: 'lg' }}>
               Get Involved
             </Button>
           </Box>
