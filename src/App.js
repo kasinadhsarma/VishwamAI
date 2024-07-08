@@ -17,10 +17,10 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Router>
-        <Box className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <Heading as="h1" size="xl" mb={4}>
+        <Box className="App" p={{ base: 4, md: 8 }} maxW="1200px" mx="auto">
+          <header className="App-header" mb={{ base: 4, md: 8 }}>
+            <img src={logo} className="App-logo" alt="logo" style={{ width: '100%', maxWidth: '200px' }} />
+            <Heading as="h1" size={{ base: 'lg', md: 'xl' }} mb={4}>
               Oxygen Agent
             </Heading>
             <IconButton
@@ -29,20 +29,20 @@ function App() {
               onClick={toggleColorMode}
               mb={4}
             />
-            <VStack spacing={4}>
-              <Button as={RouterLink} to="/educational" colorScheme="teal" size="lg">
+            <VStack spacing={4} w="full">
+              <Button as={RouterLink} to="/educational" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
                 Educational Module
               </Button>
-              <Button as={RouterLink} to="/simulation" colorScheme="teal" size="lg">
+              <Button as={RouterLink} to="/simulation" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
                 Simulation Module
               </Button>
-              <Button as={RouterLink} to="/sustainability" colorScheme="teal" size="lg">
+              <Button as={RouterLink} to="/sustainability" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
                 Sustainability Module
               </Button>
-              <Button as={RouterLink} to="/future-planning" colorScheme="teal" size="lg">
+              <Button as={RouterLink} to="/future-planning" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
                 Future Scenario Planning Tool
               </Button>
-              <Button as={RouterLink} to="/community-forum" colorScheme="teal" size="lg">
+              <Button as={RouterLink} to="/community-forum" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
                 Community Forum
               </Button>
             </VStack>
