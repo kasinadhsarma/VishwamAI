@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChakraProvider, Box, Heading, Link, VStack, Button } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes, Link as RouterLink } from 'react-router-dom';
-import logo from './logo.svg';
+import logo from './assets/o2-awareness-logo.png';
 import './App.css';
 import EducationalModule from './components/EducationalModule';
 import SimulationModule from './components/SimulationModule';
