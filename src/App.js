@@ -82,5 +82,3 @@ function App() {
 }
 
 export default App;
-console.log('useColorMode:', useColorMode);
-console.log('toggleColorMode:', toggleColorMode);
