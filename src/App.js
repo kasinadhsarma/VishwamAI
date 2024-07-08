@@ -8,7 +8,7 @@ import SimulationModule from './components/SimulationModule';
 import SustainabilityModule from './components/SustainabilityModule';
 import FutureScenarioPlanningTool from './components/FutureScenarioPlanningTool';
 import CommunityForum from './components/CommunityForum';
-import AdvancedOxygenAwarenessDashboard from './AdvancedOxygenAwarenessDashboard';
+import AdvancedOxygenAwarenessDashboard from './AdvancedOxygenAwarenessDashboard.tsx';
 import theme from './theme';
 
 function App() {
