@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Routes, Link as RouterLink } from 'reac
 import logo from './logo.svg';
 import './App.css';
 import EducationalModule from './components/EducationalModule';
+import SimulationModule from './components/SimulationModule';
+import SustainabilityModule from './components/SustainabilityModule';
+import FutureScenarioPlanningTool from './components/FutureScenarioPlanningTool';
+import CommunityForum from './components/CommunityForum';
 
 function App() {
   return (
@@ -19,6 +23,18 @@ function App() {
               <Button as={RouterLink} to="/educational" colorScheme="teal" size="lg">
                 Educational Module
               </Button>
+              <Button as={RouterLink} to="/simulation" colorScheme="teal" size="lg">
+                Simulation Module
+              </Button>
+              <Button as={RouterLink} to="/sustainability" colorScheme="teal" size="lg">
+                Sustainability Module
+              </Button>
+              <Button as={RouterLink} to="/future-planning" colorScheme="teal" size="lg">
+                Future Scenario Planning Tool
+              </Button>
+              <Button as={RouterLink} to="/community-forum" colorScheme="teal" size="lg">
+                Community Forum
+              </Button>
             </VStack>
             <p>
               Edit <code>src/App.js</code> and save to reload.
@@ -33,6 +49,10 @@ function App() {
           </header>
           <Routes>
             <Route path="/educational" element={<EducationalModule />} />
+            <Route path="/simulation" element={<SimulationModule />} />
+            <Route path="/sustainability" element={<SustainabilityModule />} />
+            <Route path="/future-planning" element={<FutureScenarioPlanningTool />} />
+            <Route path="/community-forum" element={<CommunityForum />} />
           </Routes>
         </Box>
       </Router>
