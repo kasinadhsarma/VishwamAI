@@ -37,10 +37,12 @@ function App() {
       <Router>
         <Box p={{ base: 4, md: 8 }} maxW="1200px" mx="auto">
           <Box as="header" mb={{ base: 4, md: 8 }} display="flex" justifyContent="space-between" alignItems="center">
-            <Image src={logo} alt="logo" width="100%" maxWidth="200px" />
-            <Heading as="h1" size={{ base: 'lg', md: 'xl' }} mb={4}>
-              Oxygen Agent
-            </Heading>
+            <Box display="flex" alignItems="center">
+              <Image src={logo} alt="logo" width="100%" maxWidth="100px" mr={4} />
+              <Heading as="h1" size={{ base: 'lg', md: 'xl' }}>
+                Oxygen Agent
+              </Heading>
+            </Box>
             <IconButton
               aria-label="Toggle dark mode"
               icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
