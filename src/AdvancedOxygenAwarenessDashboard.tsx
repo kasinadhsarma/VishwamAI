@@ -165,8 +165,15 @@ const OxygenAwarenessDashboard = () => {
     }, 2000);
 
     // Fetch data from the backend API
-    fetch('http://10.240.250.104:8000/example/')
-      .then(response => response.json())
+    fetch('http://localhost:8000/example/')
+      .then(response => {
+        if (!response.ok) {
+          return response.text().then(text => {
+            throw new Error(`Error ${response.status}: ${text}`);
+          });
+        }
+        return response.json();
+      })
       .then(data => {
         console.log('Fetched data:', data);
         setExampleData(data);
