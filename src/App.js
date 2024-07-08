@@ -36,7 +36,7 @@ function App() {
     <ChakraProvider theme={theme} key={colorMode}>
       <Router>
         <Box p={{ base: 4, md: 8 }} maxW="1200px" mx="auto">
-          <Box as="header" mb={{ base: 4, md: 8 }}>
+          <Box as="header" mb={{ base: 4, md: 8 }} display="flex" justifyContent="space-between" alignItems="center">
             <Image src={logo} alt="logo" width="100%" maxWidth="200px" />
             <Heading as="h1" size={{ base: 'lg', md: 'xl' }} mb={4}>
               Oxygen Agent
@@ -47,26 +47,14 @@ function App() {
               onClick={handleToggleColorMode}
               mb={4}
             />
-            <VStack spacing={4} w="full">
-              <Button as={RouterLink} to="/educational" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
-                Educational Module
-              </Button>
-              <Button as={RouterLink} to="/simulation" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
-                Simulation Module
-              </Button>
-              <Button as={RouterLink} to="/sustainability" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
-                Sustainability Module
-              </Button>
-              <Button as={RouterLink} to="/future-planning" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
-                Future Scenario Planning Tool
-              </Button>
-              <Button as={RouterLink} to="/community-forum" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
-                Community Forum
-              </Button>
-              <Button as={RouterLink} to="/dashboard" colorScheme="teal" size={{ base: 'md', md: 'lg' }} w="full">
-                Advanced Oxygen Awareness Dashboard
-              </Button>
-            </VStack>
+          </Box>
+          <Box mb={{ base: 4, md: 8 }}>
+            <Heading as="h2" size={{ base: 'md', md: 'lg' }} mb={4}>
+              Breathe Easy, Act Wisely
+            </Heading>
+            <Button colorScheme="teal" size={{ base: 'md', md: 'lg' }}>
+              Get Involved
+            </Button>
           </Box>
           <Box>
             <Routes>
