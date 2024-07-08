@@ -1,6 +1,7 @@
 import React from 'react';
-import { ChakraProvider, Box, Heading, Link, VStack, Button } from '@chakra-ui/react';
+import { ChakraProvider, Box, Heading, Link, VStack, Button, useColorMode, IconButton } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes, Link as RouterLink } from 'react-router-dom';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import logo from './assets/o2-awareness-logo.png';
 import './App.css';
 import EducationalModule from './components/EducationalModule';
@@ -8,10 +9,13 @@ import SimulationModule from './components/SimulationModule';
 import SustainabilityModule from './components/SustainabilityModule';
 import FutureScenarioPlanningTool from './components/FutureScenarioPlanningTool';
 import CommunityForum from './components/CommunityForum';
+import theme from './theme';
 
 function App() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Router>
         <Box className="App">
           <header className="App-header">
@@ -19,6 +23,12 @@ function App() {
             <Heading as="h1" size="xl" mb={4}>
               Oxygen Agent
             </Heading>
+            <IconButton
+              aria-label="Toggle dark mode"
+              icon={colorMode === 'light' ? <FaMoon /> : <FaSun />}
+              onClick={toggleColorMode}
+              mb={4}
+            />
             <VStack spacing={4}>
               <Button as={RouterLink} to="/educational" colorScheme="teal" size="lg">
                 Educational Module
