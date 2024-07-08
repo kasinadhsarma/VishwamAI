@@ -66,14 +66,10 @@ const HeroSection = ({ darkMode }) => {
   );
 };
 
-const OxygenLevelsChart = ({ darkMode }) => {
-  const data = [
-    { year: '1960', level: 315 },
-    { year: '1980', level: 338 },
-    { year: '2000', level: 369 },
-    { year: '2020', level: 413 },
-    { year: '2023', level: 420 },
-  ];
+// Replace static data with dynamic data from exampleData
+const OxygenLevelsChart = ({ darkMode, data }) => {
+  console.log('OxygenLevelsChart rendered');
+  console.log('Received data:', data);
 
   return (
     <div className="h-64 mt-4">
@@ -89,7 +85,8 @@ const OxygenLevelsChart = ({ darkMode }) => {
   );
 };
 
-const AwarenessModule = ({ darkMode }) => {
+// Update AwarenessModule to pass exampleData to OxygenLevelsChart
+const AwarenessModule = ({ darkMode, exampleData }) => {
   return (
     <Box className={`w-full overflow-hidden transition-all duration-300 hover:shadow-lg ${darkMode ? 'bg-gray-700 text-white' : ''}`}>
       <Box className={darkMode ? 'bg-gray-800' : 'bg-gradient-to-r from-green-400 to-blue-500 text-white'}>
@@ -99,13 +96,19 @@ const AwarenessModule = ({ darkMode }) => {
       <Box className="p-6">
         <h3 className="text-lg font-semibold mb-4">Atmospheric Oxygen Levels</h3>
         <p className="mb-4">Oxygen levels in our atmosphere have been changing over time. Here's a look at the trends:</p>
-        <OxygenLevelsChart darkMode={darkMode} />
+        <OxygenLevelsChart darkMode={darkMode} data={exampleData} />
         <ul className="list-disc list-inside my-6 space-y-2">
           <li>Oxygen is crucial for most life forms on Earth</li>
           <li>It's produced by plants through photosynthesis</li>
           <li>Human activities are affecting oxygen levels</li>
           <li>Oceans produce about 50-80% of the Earth's oxygen</li>
         </ul>
+        {exampleData && (
+          <Box className="mt-6">
+            <Heading className="text-lg font-semibold mb-4">Fetched Data from Backend</Heading>
+            <pre className="bg-gray-100 p-4 rounded">{JSON.stringify(exampleData, null, 2)}</pre>
+          </Box>
+        )}
         <Button className={`w-full ${darkMode ? 'bg-blue-600 hover:bg-blue-700' : 'bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600'} text-white transition-all duration-300 transform hover:scale-105`}>
           Learn More About Oxygen
         </Button>
@@ -153,12 +156,24 @@ const PortfolioSection = ({ darkMode }) => (
 const OxygenAwarenessDashboard = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [exampleData, setExampleData] = useState(null);
 
   useEffect(() => {
     // Simulating an initialization process
     const timer = setTimeout(() => {
       setIsInitialized(true);
     }, 2000);
+
+    // Fetch data from the backend API
+    fetch('http://10.240.250.104:8000/example/')
+      .then(response => response.json())
+      .then(data => {
+        console.log('Fetched data:', data);
+        setExampleData(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
 
     return () => clearTimeout(timer);
   }, []);
@@ -213,7 +228,7 @@ const OxygenAwarenessDashboard = () => {
               <Box className="p-6">
                 <h3 className="text-lg font-semibold mb-4">Atmospheric Oxygen Levels</h3>
                 <p className="mb-4">Oxygen levels in our atmosphere have been changing over time. Here's a look at the trends:</p>
-                <OxygenLevelsChart darkMode={darkMode} />
+                <OxygenLevelsChart darkMode={darkMode} data={exampleData} />
                 <ul className="list-disc list-inside my-6 space-y-2">
                   <li>Oxygen is crucial for most life forms on Earth</li>
                   <li>It's produced by plants through photosynthesis</li>
