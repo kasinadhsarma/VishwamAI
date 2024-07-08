@@ -38,7 +38,7 @@ function App() {
         <Box p={{ base: 4, md: 8 }} maxW="1200px" mx="auto">
           <Box as="header" mb={{ base: 4, md: 8 }} display="flex" justifyContent="space-between" alignItems="center">
             <Box display="flex" alignItems="center">
-              <Image src={logo} alt="logo" width="100%" maxWidth="100px" mr={4} />
+              <Image src={logo} alt="logo" width="100%" maxWidth="150px" mr={4} />
               <Heading as="h1" size={{ base: 'lg', md: 'xl' }}>
                 Oxygen Agent
               </Heading>
@@ -54,7 +54,7 @@ function App() {
             <Heading as="h2" size={{ base: 'md', md: 'lg' }} mb={4}>
               Breathe Easy, Act Wisely
             </Heading>
-            <Button as={RouterLink} to="/community-forum" colorScheme="teal" size={{ base: 'md', md: 'lg' }}>
+            <Button as={RouterLink} to="/community-forum" colorScheme="teal" size={{ base: 'md', md: 'lg' }} _hover={{ bg: 'teal.600' }}>
               Get Involved
             </Button>
           </Box>
